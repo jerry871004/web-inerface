@@ -1,18 +1,22 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <!DOCTYPE html>
-<script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/michellelpepe/pen/GoQyoJ?depth=everything&order=popularity&page=84&q=pack&show_forks=false" />
+<meta charset='UTF-8'>
+<meta name="robots" content="noindex">
+<!-- <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+<link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+<link rel="canonical" href="https://codepen.io/michellelpepe/pen/GoQyoJ?depth=everything&order=popularity&page=84&q=pack&show_forks=false" /> -->
 <link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
 
 
 <style>
 html, body {
-  background: -webkit-linear-gradient(330deg, #000, #f0a6ca);
-  background: linear-gradient(120deg, #000, #f0a6ca);
+  background: -webkit-linear-gradient(330deg,#e66465, #9198e5);
+  background: linear-gradient(120deg,#e66465, #9198e5);
   overflow: hidden;
 }
 .container {
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,17 +30,16 @@ html, body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 106vh;
+  height: 100%;
   width: 100vw;
 }
-
 .container h1 {
   margin: 0.5em auto;
   color: #FFF;
   text-align: center;
 }
-
 .chatbox {
+  z-index: 2;
   background: rgba(255, 255, 255, 0.05);
   width: 600px;
   height: 75%;
@@ -44,63 +47,29 @@ html, body {
   position: relative;
   box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
 }
-
-.chatbox__messages:nth-of-type(odd) .chatbox__messages__user-message--ind-message {
-  float: right;
-}
-
-.chatbox__messages:nth-of-type(odd) .chatbox__messages__user-message--ind-message:after {
-  content: '';
-  position: absolute;
-  margin: -1.5em -17.06em;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 10px solid rgba(255, 255, 255, 0.2);
-}
-
-.chatbox__messages:nth-of-type(even) .chatbox__messages__user-message--ind-message {
-  float: left;
-}
-
-.chatbox__messages:nth-of-type(even) .chatbox__messages__user-message--ind-message:after {
-  content: '';
-  position: absolute;
-  margin: -1.5em 1.87em;
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid rgba(255, 255, 255, 0.2);
-}
-
-.chatbox__messages__user-message {
-  width: 450px;
-}
-
-.chatbox__messages__user-message--ind-message {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 1em 0;
-  height: auto;
-  width: 65%;
-  border-radius: 5px;
-  margin: 2em 1em;
-  overflow: auto;
-}
-
-.chatbox__messages__user-message--ind-message > p.name {
-  color: #FFF;
-  font-size: 1em;
-}
-
-.chatbox__messages__user-message--ind-message > p.message {
-  color: #FFF;
-  font-size: 0.7em;
-  margin: 0 2.8em;
+textarea {
+  z-index: 3;
+  /*float:left;*/
+	background: rgba(255, 255, 255, 0.03);
+	color:white;
+	position:absolute; 
+	display:block; 
+	top:0; 
+	border:0; 
+	width:75%; 
+	/*margin-left:10%; */
+	/*margin-right:10%; */
+	height:90%; 
+	resize:none; 
+	font-family:Courier; 
+	overflow-y:auto; 
+	user-select:none; 
+	font-size:1vw;
+	
 }
 
 .chatbox__user-list {
+  z-index: 3;
   background: rgba(255, 255, 255, 0.1);
   width: 25%;
   height: 100%;
@@ -108,7 +77,6 @@ html, body {
   border-top-right-radius: 0.2em;
   border-bottom-right-radius: 0.2em;
 }
-
 .chatbox__user-list h1 {
   background: rgba(255, 255, 255, 0.05);
   color: rgba(255, 255, 255, 0.9);
@@ -118,26 +86,21 @@ html, body {
   font-weight: 300;
   text-align: center;
 }
-
 .chatbox__user, .chatbox__user--active, .chatbox__user--busy, .chatbox__user--away {
   width: 0.5em;
   height: 0.5em;
   border-radius: 100%;
   margin: 1em 0.7em;
 }
-
 .chatbox__user--active {
   background: rgba(23, 190, 187, 0.8);
 }
-
 .chatbox__user--busy {
   background: rgba(252, 100, 113, 0.8);
 }
-
 .chatbox__user--away {
   background: rgba(255, 253, 130, 0.8);
 }
-
 .chatbox p {
   float: left;
   text-align: left;
@@ -147,36 +110,31 @@ html, body {
   color: #FFF;
   width: 200px;
 }
-
-.chatbox form {
+.chatbox p {
   background: #222;
 }
-
-.chatbox form input {
-  background: rgba(255, 255, 255, 0.03);
+.chatbox p input { 
+  z-index: 3;
+  background-color:rgba(255, 255, 255, 0.07);
   position: absolute;
   bottom: 0;
   left: 0;
-  border: none;
-  width: 75%;
+  border:0; 
+  width:75%;
+  height:10%;"
   padding: 1.2em;
-  outline: none;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 300;
 }
-
 ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.9);
 }
-
 :-moz-placeholder 
   color: rgba(255, 255, 255, 0.9);
 }
-
 ::-moz-placeholder {
   color: rgba(255, 255, 255, 0.9);
 }
-
 :-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.9);
 }
@@ -191,39 +149,54 @@ input:focus{
 <!--------------------------------------------->
 
 <!--------------------------------------------->
-<body  style="text-align:center;">         
-    <textarea readonly="true" id="botChat" style=";background: rgba(255, 255, 255, 0.03); position:absolute; display:block; top:3vh; border:0; width:80%; margin-left:10%; margin-right:10%; height:75vh; resize:none; font-family:Courier; overflow-y:auto; user-select:none; font-size:3vw;color:white;">
+<body>         
+    <!--<textarea readonly="true" id="botChat" style=";background: rgba(255, 255, 255, 0.03); position:absolute; display:block; top:3vh; border:0; width:80%; margin-left:10%; margin-right:10%; height:75vh; resize:none; font-family:Courier; overflow-y:auto; user-select:none; font-size:3vw;color:white;">
     </textarea>        
     <p style="position:absolute;display:block; top:78vh; width:80%;height: 30%; margin-left:10%; margin-right:10%;">        
     	<input type="text" placeholder="Type message" onKeypress="enterButton(event,document.getElementsByTagName('input')[0].value);" style="color:white; background-color:rgba(255, 255, 255, 0.1);border:0; width:100%;height:20%;">         
         
-    </p>
+    </p>-->
+
+<div class='container'>
+	<h1>Chating room</h1>
+	<div class='chatbox'>
+		<div class='chatbox__user-list'>
+      <h1>
+        Members
+      </h1>
+		</div>
+		<textarea readonly="true" id="botChat"></textarea>
+		<div class ='chatbox__messages'>
+		</div>
+		<p>
+			<input type="text" placeholder="Type message" onkeypress="enterButton(event,document.getElementsByTagName('input')[0].value);">
+		</p>
+	</div>
 
 
 
-<script>
-	var you ="You";
-	function answer(x){
-var botOut = botChat.value;
-    document.getElementsByTagName("textarea")[0] = botChat
+  <script>
+  var you ="You";
+  function answer(x){
+// var botOut = botChat.value;
+    // document.getElementsByTagName("textarea")[0] = botChat
     //RESPONSES//
-
-                document.getElementsByTagName("input")[0].value = ""
-                if (x.charAt(0).includes("!") === false){
-                yousay(x); botChat.scrollTop = botChat.scrollHeight;
-                } 
-	}
-	setTimeout( function() {botChat.scrollTop = botChat.scrollHeight;}, 730)
-	function botsays(x){
-		document.getElementsByTagName("textarea")[0].innerHTML += x;
-	}
-	function yousay(x){
-		botsays("\n"+ you + " \ : "+x)
-	}
-	function enterButton(e, x) { 
-		if (e.keyCode == 13) { answer(x); }
-	}
-</script>
-</body>
+    document.getElementsByTagName("input")[0].value = ""
+    if (x.charAt(0).includes("!") === false){
+      yousay(x); botChat.scrollTop = botChat.scrollHeight;
+    } 
+  }
+  // setTimeout( function() {botChat.scrollTop = botChat.scrollHeight;}, 730)
+  function botsays(x){
+    document.getElementsByTagName("textarea")[0].innerHTML += x;
+  }
+  function yousay(x){
+    botsays("\n"+ you + " \ : "+x)
+  }
+  function enterButton(e, x) { 
+    if (e.keyCode == 13) { answer(x); }
+  }
+  </script>
 </div>
+</body>
 </html>
