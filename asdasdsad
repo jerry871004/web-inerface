@@ -1,0 +1,182 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!DOCTYPE html>
+<meta charset='UTF-8'>
+<meta name="robots" content="noindex">
+
+
+
+<style>
+html, body {
+  background: #f0f7ff;
+  overflow: hidden;
+}
+/*.container {
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}*/
+.container h1 {
+  margin: 0.5em auto;
+  color: black;
+  text-align: center;
+}
+.chatbox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+textarea {
+	background: #f0f7ff;
+	color:black;
+	position:absolute; 
+	display:block; 
+	top:0; 
+  left: 7%;
+	border:0; 
+	width:68%; 
+	height:85%; 
+	resize:none; 
+	font-family:Courier; 
+	overflow-y:auto; 
+	user-select:none; 
+	font-size:24px;
+  font-weight: 800;
+	padding: 40px;
+}
+.chatbox__user-list {
+  /*background: rgba(220, 220, 220,0.7);*/
+  width: 17%; 
+  height: 100%;
+  float: right;
+  border-top-right-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+  border:0;
+  border-left-width: 1px;
+  border-style: dashed; 
+  border-color: #d7e3e7;
+}
+.chatbox__user-list h1 {
+  background: rgba(220, 220, 220);
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 2.3em;
+  padding: 1em;
+  margin: 0;
+  font-weight: 900;
+  text-align: center;
+  border-left-width: 78px; 
+}
+.chatbox_forinput {
+  background: (255,255,255);
+  float: left;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  color: black;
+  width:83%;
+  height:15%;
+}
+.chatbox_forinput input { 
+  background-color:rgba(190 ,190 ,190,0.6);
+  float: center;
+  border: 0;
+  border-radius:25px; 
+  width:80%;
+  height:55%;
+  margin: 10px;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+  font-size: 18px;
+  padding: 20px;
+  margin: 0 auto;
+}
+::-webkit-input-placeholder {
+   color: rgba(0, 0, 0, 0.45);
+}
+::-moz-placeholder{
+   color: rgba(0, 0, 0, 0.45);
+}
+::-moz-placeholder {
+   color: rgba(0, 0, 0, 0.45);
+}
+::-ms-input-placeholder {
+   color: rgba(0, 0, 0, 0.45);
+}
+textarea:focus{
+	outline: none;
+}
+input:focus{
+	outline: none;
+}
+</style>
+<html>
+<!--------------------------------------------->
+
+<!--------------------------------------------->
+<body>         
+    <!--<textarea readonly="true" id="botChat" style=";background: rgba(255, 255, 255, 0.03); position:absolute; display:block; top:3vh; border:0; width:80%; margin-left:10%; margin-right:10%; height:75vh; resize:none; font-family:Courier; overflow-y:auto; user-select:none; font-size:3vw;color:white;">
+    </textarea>        
+    <p style="position:absolute;display:block; top:78vh; width:80%;height: 30%; margin-left:10%; margin-right:10%;">        
+    	<input type="text" placeholder="Type message" onKeypress="enterButton(event,document.getElementsByTagName('input')[0].value);" style="color:white; background-color:rgba(255, 255, 255, 0.1);border:0; width:100%;height:20%;">         
+        
+    </p>-->
+
+<div class='container'>
+	<!-- <h1>Chating room</h1> -->
+	<div class='chatbox'>
+		<div class='chatbox__user-list'>
+      <h1>
+        Members
+      </h1>
+		</div>
+		<textarea readonly="true" id="botChat"></textarea>
+		<div class ='chatbox__messages'>
+		</div>
+		<div class='chatbox_forinput'>
+			<input type="text" placeholder="Type message" onkeypress="enterButton(event,document.getElementsByTagName('input')[0].value);">
+		</div>
+	</div>
+
+
+
+  <script>
+  var you ="You";
+  function answer(x){
+// var botOut = botChat.value;
+    // document.getElementsByTagName("textarea")[0] = botChat
+    //RESPONSES//
+    document.getElementsByTagName("input")[0].value = ""
+    if (x.charAt(0).includes("!") === false){
+      yousay(x); botChat.scrollTop = botChat.scrollHeight;
+    } 
+  }
+  // setTimeout( function() {botChat.scrollTop = botChat.scrollHeight;}, 730)
+  function botsays(x){
+    document.getElementsByTagName("textarea")[0].innerHTML += x;
+  }
+  function yousay(x){
+    botsays("\n"+ you + " \ : "+x)
+  }
+  function enterButton(e, x) { 
+    if (e.keyCode == 13) { answer(x); }
+  }
+  </script>
+</div>
+</body>
+</html>
