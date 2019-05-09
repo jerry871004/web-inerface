@@ -1,4 +1,5 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <!DOCTYPE html>
 <meta charset='UTF-8'>
@@ -33,7 +34,8 @@ html, body {
   top:0;
   left: 0;
 }
-.chatarea textarea {
+
+#showarea {
   background: #f0f7ff;
   color:black;
   display:block;
@@ -41,15 +43,17 @@ html, body {
   border:1px solid; 
   border-color:#d7e3e8;
   width:80%; 
-  height:100%; 
+  height:95%; 
   resize:none; 
   font-family:Courier; 
   overflow-y:auto; 
-  user-select:none; 
+  user-select:none;
   font-size:24px;
   font-weight: 800;
-  padding: 15px;
+  padding: 0;
+  margin-top:3%;
 }
+
 .chatbox__user-list {
   width: 17%; 
   height: 100%;
@@ -104,7 +108,7 @@ html, body {
   font-size: 18px;
   padding: 20px;
   position: relative;
-  bottom: -25%;
+  bottom: -26%;
 }
 ::-webkit-input-placeholder {
    color: rgba(0, 0, 0, 0.45);
@@ -131,7 +135,6 @@ input:focus{
 <!--------------------------------------------->
 <body>         
 <div class='container'>
-  <!-- <h1>Chating room</h1> -->
   <div class='chatbox'>
     <div class='chatbox__user-list'>
       <div class='chatbox__user-list-top'>
@@ -145,36 +148,30 @@ input:focus{
 
     </div>
     <div class="chatarea">
-      <textarea readonly="true" id="botChat"></textarea>
-    </div>
+      <div id="showarea">         
+      </div>
+    </div> 
     <div class='chatbox_forinput'>
-      <input type="text" placeholder="Type message" onkeypress="enterButton(event,document.getElementsByTagName('input')[0].value);">
+      <input type="text" id="input-area" placeholder="Type message">
     </div>
   </div>
 
 
 
   <script>
-  var you ="You";
-  function answer(x){
-// var botOut = botChat.value;
-    // document.getElementsByTagName("textarea")[0] = botChat
-    //RESPONSES//
-    document.getElementsByTagName("input")[0].value = ""
-    if (x.charAt(0).includes("!") === false){
-      yousay(x); botChat.scrollTop = botChat.scrollHeight;
-    } 
-  }
-  // setTimeout( function() {botChat.scrollTop = botChat.scrollHeight;}, 730)
-  function botsays(x){
-    document.getElementsByTagName("textarea")[0].innerHTML += x;
-  }
-  function yousay(x){
-    botsays("\n"+ you + " \ : "+x)
-  }
-  function enterButton(e, x) { 
-    if (e.keyCode == 13) { answer(x); }
-  }
+    $("#input-area").keypress(function(e)
+    {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13)
+        sendMessage();
+    });
+    function sendMessage()
+    {
+      message = $('#input-area').val();
+      $('#showarea').append('<div class="text">' + message + '</div>');
+
+      $('#input-area').val('');
+    }
   </script>
 </div>
 </body>
