@@ -3,131 +3,126 @@
 <!DOCTYPE html>
 <meta charset='UTF-8'>
 <meta name="robots" content="noindex">
-<!-- <link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
-<link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
-<link rel="canonical" href="https://codepen.io/michellelpepe/pen/GoQyoJ?depth=everything&order=popularity&page=84&q=pack&show_forks=false" /> -->
-<link href='https://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+
 
 
 <style>
 html, body {
-  background: -webkit-linear-gradient(330deg,#e66465, #9198e5);
-  background: linear-gradient(120deg,#e66465, #9198e5);
+  background: #f0f7ff;
   overflow: hidden;
 }
-.container {
-  z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  height: 100%;
-  width: 100vw;
-}
+
 .container h1 {
   margin: 0.5em auto;
-  color: #FFF;
+  color: black;
   text-align: center;
 }
 .chatbox {
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.05);
-  width: 600px;
-  height: 75%;
-  border-radius: 0.2em;
-  position: relative;
-  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
 }
-textarea {
-  z-index: 3;
-  /*float:left;*/
-	background: rgba(255, 255, 255, 0.03);
-	color:white;
-	position:absolute; 
-	display:block; 
-	top:0; 
-	border:0; 
-	width:75%; 
-	/*margin-left:10%; */
-	/*margin-right:10%; */
-	height:90%; 
-	resize:none; 
-	font-family:Courier; 
-	overflow-y:auto; 
-	user-select:none; 
-	font-size:1vw;
-	
+.chatarea{
+  width: 83%;
+  height: 85%;
+  position: fixed;
+  top:0;
+  left: 0;
 }
-
+.chatarea textarea {
+  background: #f0f7ff;
+  color:black;
+  display:block;
+  margin: 0 auto; 
+  border:1px solid; 
+  border-color:#d7e3e8;
+  width:80%; 
+  height:100%; 
+  resize:none; 
+  font-family:Courier; 
+  overflow-y:auto; 
+  user-select:none; 
+  font-size:24px;
+  font-weight: 800;
+  padding: 15px;
+}
 .chatbox__user-list {
-  z-index: 3;
-  background: rgba(255, 255, 255, 0.1);
-  width: 25%;
+  width: 17%; 
   height: 100%;
   float: right;
   border-top-right-radius: 0.2em;
   border-bottom-right-radius: 0.2em;
+  border:0;
+  border-left-width: 1px;
+  border-style: dashed; 
+  border-color: #d7e3e7;
 }
-.chatbox__user-list h1 {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.9em;
-  padding: 1em;
+.chatbox__user-list-top {
+  background: rgba(220, 220, 220);
+  width: 100%;
+  height: 15%;
+  border-left-width: 78px;
+
+}
+.chatbox__user-list-top p {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 2.3em;
+  padding: 0;
   margin: 0;
-  font-weight: 300;
+  font-weight: 900;
   text-align: center;
+  position: relative;
+  bottom: -30%;
 }
-
-.chatbox p {
+.chatbox__user-list-bottom{
+  width: 100%;
+  height: 85%;
+}
+.chatbox_forinput {
+  background: (255,255,255);
   float: left;
-  text-align: left;
-  margin: -0.25em 2em;
-  font-size: 0.7em;
-  font-weight: 300;
-  color: #FFF;
-  width: 200px;
-  background: #222;
-}
-
-.chatbox p input { 
-  z-index: 3;
-  background-color:rgba(255, 255, 255, 0.07);
   position: absolute;
   bottom: 0;
   left: 0;
-  border:0; 
-  width:75%;
-  height:10%;"
-  padding: 1.2em;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 300;
+  text-align: center;
+  color: black;
+  width:83%;
+  height:15%;
+}
+.chatbox_forinput input { 
+  background-color:rgba(190 ,190 ,190,0.6);
+  border: 0;
+  border-radius:25px; 
+  width:80%;
+  height:55%;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 400;
+  font-size: 18px;
+  padding: 20px;
+  position: relative;
+  bottom: -25%;
 }
 ::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+   color: rgba(0, 0, 0, 0.45);
 }
-:-moz-placeholder 
-  color: rgba(255, 255, 255, 0.9);
+::-moz-placeholder{
+   color: rgba(0, 0, 0, 0.45);
 }
 ::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+   color: rgba(0, 0, 0, 0.45);
 }
-:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+::-ms-input-placeholder {
+   color: rgba(0, 0, 0, 0.45);
 }
 textarea:focus{
-	outline: none;
+  outline: none;
 }
 input:focus{
-	outline: none;
+  outline: none;
 }
 </style>
 <html>
@@ -135,28 +130,27 @@ input:focus{
 
 <!--------------------------------------------->
 <body>         
-    <!--<textarea readonly="true" id="botChat" style=";background: rgba(255, 255, 255, 0.03); position:absolute; display:block; top:3vh; border:0; width:80%; margin-left:10%; margin-right:10%; height:75vh; resize:none; font-family:Courier; overflow-y:auto; user-select:none; font-size:3vw;color:white;">
-    </textarea>        
-    <p style="position:absolute;display:block; top:78vh; width:80%;height: 30%; margin-left:10%; margin-right:10%;">        
-    	<input type="text" placeholder="Type message" onKeypress="enterButton(event,document.getElementsByTagName('input')[0].value);" style="color:white; background-color:rgba(255, 255, 255, 0.1);border:0; width:100%;height:20%;">         
-        
-    </p>-->
-
 <div class='container'>
-	<h1>Chating room</h1>
-	<div class='chatbox'>
-		<div class='chatbox__user-list'>
-      <h1>
-        Members
-      </h1>
-		</div>
-		<textarea readonly="true" id="botChat"></textarea>
-		<div class ='chatbox__messages'>
-		</div>
-		<p>
-			<input type="text" placeholder="Type message" onkeypress="enterButton(event,document.getElementsByTagName('input')[0].value);">
-		</p>
-	</div>
+  <!-- <h1>Chating room</h1> -->
+  <div class='chatbox'>
+    <div class='chatbox__user-list'>
+      <div class='chatbox__user-list-top'>
+        <p>
+          Members
+        </p>
+      </div>
+      <div class='chatbox__user-list-bottom'>
+        
+      </div>
+
+    </div>
+    <div class="chatarea">
+      <textarea readonly="true" id="botChat"></textarea>
+    </div>
+    <div class='chatbox_forinput'>
+      <input type="text" placeholder="Type message" onkeypress="enterButton(event,document.getElementsByTagName('input')[0].value);">
+    </div>
+  </div>
 
 
 
