@@ -122,6 +122,16 @@ html, body {
 ::-ms-input-placeholder {
    color: rgba(0, 0, 0, 0.45);
 }
+.messagecube{
+  position:relative;
+  padding:10px;
+  margin:10px;
+  background-color:rgb(190 ,190 ,190,0.6);  
+  border-radius:10px; 
+  overflow-y:auto;
+  width: 70%;
+
+}
 textarea:focus{
   outline: none;
 }
@@ -168,7 +178,7 @@ input:focus{
     function sendMessage()
     {
       message = $('#input-area').val();
-      $('#showarea').append('<div class="text">' + message + '</div>');
+      $('#showarea').append('<div class="messagecube">' + message + '</div>');
 
       $('#input-area').val('');
     }
