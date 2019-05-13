@@ -1,127 +1,56 @@
-html, body {
-  background: #f0f7ff;
-  overflow: hidden;
-}
-.container h1 {
-  margin: 0.5em auto;
-  color: black;
-  text-align: center;
-}
-.chatbox {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top:0;
-  left:0;
-  right: 0;
-  bottom: 0;
-}
-.chatarea{
-  width: 83%;
-  height: 85%;
-  position: fixed;
-  top:0;
-  left: 0;
-}
-#showarea {
-  background: #f0f7ff;
-  color:black;
-  display:block;
-  margin: 0 auto; 
-  border:1px solid; 
-  border-color:#d7e3e8;
-  width:80%; 
-  height:95%; 
-  resize:none; 
-  font-family:Courier; 
-  overflow-y:auto; 
-  user-select:none;
-  font-size:24px;
-  font-weight: 800;
-  padding: 0;
-  margin-top:3%;
-}
-.chatbox__user-list {
-  width: 17%; 
-  height: 100%;
-  float: right;
-  border-top-right-radius: 0.2em;
-  border-bottom-right-radius: 0.2em;
-  border:0;
-  border-left-width: 1px;
-  border-style: dashed; 
-  border-color: #d7e3e7;
-}
-.chatbox__user-list-top {
-  background: rgba(220, 220, 220);
-  width: 100%;
-  height: 15%;
-  border-left-width: 78px;
-}
-.chatbox__user-list-top p {
-  color: rgba(0, 0, 0, 0.9);
-  font-size: 2.3em;
-  padding: 0;
-  margin: 0;
-  font-weight: 900;
-  text-align: center;
-  position: relative;
-  bottom: -30%;
-}
-.chatbox__user-list-bottom{
-  width: 100%;
-  height: 85%;
-}
-.chatbox_forinput {
-  background: (255,255,255);
-  float: left;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  text-align: center;
-  color: black;
-  width:83%;
-  height:15%;
-}
-.chatbox_forinput input { 
-  background-color:rgba(190 ,190 ,190,0.6);
-  border: 0;
-  border-radius:25px; 
-  width:80%;
-  height:55%;
-  color: rgba(0, 0, 0, 0.9);
-  font-weight: 400;
-  font-size: 18px;
-  padding: 20px;
-  position: relative;
-  bottom: -26%;
-}
-::-webkit-input-placeholder {
-   color: rgba(0, 0, 0, 0.45);
-}
-::-moz-placeholder{
-   color: rgba(0, 0, 0, 0.45);
-}
-::-moz-placeholder {
-   color: rgba(0, 0, 0, 0.45);
-}
-::-ms-input-placeholder {
-   color: rgba(0, 0, 0, 0.45);
-}
-.messagecube{
-  position:relative;
-  padding:10px;
-  margin:10px;
-  background-color:rgb(190 ,190 ,190,0.6);  
-  border-radius:10px; 
-  overflow-x:hidden;
-  width: 70%;
-  word-wrap: break-word;
-  word-break: break-all;
-}
-textarea:focus{
-  outline: none;
-}
-input:focus{
-  outline: none;
-}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!DOCTYPE html>
+<meta charset='UTF-8'>
+<meta name="robots" content="noindex">
+
+
+<html>
+<!--------------------------------------------->
+<link rel="stylesheet" type="text/css" href="chatroom.css">
+<!--------------------------------------------->
+<body>         
+<div class='container'>
+  <div class='chatbox'>
+    <div class='chatbox__user-list'>
+      <div class='chatbox__user-list-top'>
+        <p>
+          Members
+        </p>
+      </div>
+      <div class='chatbox__user-list-bottom'>
+        
+      </div>
+
+    </div>
+    <div class="chatarea">
+      <div id="showarea">         
+      </div>
+    </div> 
+    <div class='chatbox_forinput'>
+      <input type="text" id="input-area" placeholder="Type message">
+    </div>
+  </div>
+
+
+
+  <script>
+
+    $("#input-area").keypress(function(e)
+    {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13)
+        sendMessage();
+    });
+    function sendMessage()
+    {
+      message = $('#input-area').val();
+      $('#showarea').append('<div class="messagecube">' + message + '</div>');
+      showarea.scrollTop= showarea.scrollHeight;
+
+      $('#input-area').val('');
+    }
+  </script>
+</div>
+</body>
+</html>
