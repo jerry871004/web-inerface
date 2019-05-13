@@ -1,18 +1,7 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
-<!DOCTYPE html>
-<meta charset='UTF-8'>
-<meta name="robots" content="noindex">
-
-
-
-<style>
 html, body {
   background: #f0f7ff;
   overflow: hidden;
 }
-
 .container h1 {
   margin: 0.5em auto;
   color: black;
@@ -34,7 +23,6 @@ html, body {
   top:0;
   left: 0;
 }
-
 #showarea {
   background: #f0f7ff;
   color:black;
@@ -53,7 +41,6 @@ html, body {
   padding: 0;
   margin-top:3%;
 }
-
 .chatbox__user-list {
   width: 17%; 
   height: 100%;
@@ -70,7 +57,6 @@ html, body {
   width: 100%;
   height: 15%;
   border-left-width: 78px;
-
 }
 .chatbox__user-list-top p {
   color: rgba(0, 0, 0, 0.9);
@@ -128,9 +114,10 @@ html, body {
   margin:10px;
   background-color:rgb(190 ,190 ,190,0.6);  
   border-radius:10px; 
-  overflow-y:auto;
+  overflow-x:hidden;
   width: 70%;
-
+  word-wrap: break-word;
+  word-break: break-all;
 }
 textarea:focus{
   outline: none;
@@ -138,51 +125,3 @@ textarea:focus{
 input:focus{
   outline: none;
 }
-</style>
-<html>
-<!--------------------------------------------->
-
-<!--------------------------------------------->
-<body>         
-<div class='container'>
-  <div class='chatbox'>
-    <div class='chatbox__user-list'>
-      <div class='chatbox__user-list-top'>
-        <p>
-          Members
-        </p>
-      </div>
-      <div class='chatbox__user-list-bottom'>
-        
-      </div>
-
-    </div>
-    <div class="chatarea">
-      <div id="showarea">         
-      </div>
-    </div> 
-    <div class='chatbox_forinput'>
-      <input type="text" id="input-area" placeholder="Type message">
-    </div>
-  </div>
-
-
-
-  <script>
-    $("#input-area").keypress(function(e)
-    {
-      code = (e.keyCode ? e.keyCode : e.which);
-      if (code == 13)
-        sendMessage();
-    });
-    function sendMessage()
-    {
-      message = $('#input-area').val();
-      $('#showarea').append('<div class="messagecube">' + message + '</div>');
-
-      $('#input-area').val('');
-    }
-  </script>
-</div>
-</body>
-</html>
