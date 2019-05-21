@@ -13,7 +13,63 @@
 <div class='container'>
   <div class='chatbox'>
     <div class='chatbox__user-list'>
+      <div class='chatbox__user-list-top'><script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!DOCTYPE html>
+<meta charset='UTF-8'>
+<meta name="robots" content="noindex">
+
+
+<html>
+<!--------------------------------------------->
+<link rel="stylesheet" type="text/css" href="c.css">
+<!--------------------------------------------->
+<body>         
+<div class='container'>
+  <div class='chatbox'>
+    <div class='chatbox__user-list'>
       <div class='chatbox__user-list-top'>
+        <p>
+          Members
+        </p>
+      </div>
+      <div class='chatbox__user-list-bottom'>
+        
+      </div>
+
+    </div>
+    <div class="chatarea">
+      <div class="infor_bar">
+        <button type="button" id="log_out">Log out</button>
+      </div>
+      <div id="showarea">         
+      </div>
+    </div> 
+    <div class='chatbox_forinput'>
+      <input type="text" id="input-area" placeholder="Type message">
+    </div>
+  </div>
+
+
+
+  <script>
+    $("#input-area").keypress(function(e)
+    {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13)
+        sendMessage();
+    });
+    function sendMessage()
+    {
+      message = $('#input-area').val();
+      $('#showarea').append('<div class="messagecube-right">' + message + '</div>');
+      showarea.scrollTop= showarea.scrollHeight;
+      $('#input-area').val('');
+    }
+  </script>
+</div>
+</body>
+</html>
         <p>
           Members
         </p>
